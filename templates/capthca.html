@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Session </title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <img src="{% static 'images/bg.png' %}" alt="" class="bg">
+
+    <form class="container" method="POST">
+        {% csrf_token %}
+        <input type="text" name="user_x" id="x" hidden>
+        <input type="text" name="user_y" id="y" hidden>
+
+        <div class="btns">
+            <button type="button" id="top" class="top"><i class="fas fa-arrow-up"></i></button>
+            <button type="button" id="down" class="down"><i class="fas fa-arrow-down"></i></button>
+            <button type="button" id="left" class="left"><i class="fas fa-arrow-left"></i></button>
+            <button type="button" id="right" class="right"><i class="fas fa-arrow-right"></i></button>
+
+        </div>
+
+        <div class="imgs-area">
+            <img class="big" src="{{session.big_image.url}}" alt="">
+            {% if x and y %}
+                <img class="small" style="top: {{y}};left:{{x}};width:{{object_width}}%;height: {{object_height}}%;"  id="obj" src="{{session.small_image.url}}" alt="">
+            {% else %}
+                <img class="small" style="width:{{object_width}}%;height: {{object_height}}%;"  id="obj" src="{{session.small_image.url}}" alt="">
+            {% endif %}
+        </div>
+
+        <button class="done-btn">تأكيد</button>
+
+    </form>
+
+
+    <!-- append view to show overlay -->
+    {% if state %}
+        <div class="overlay view">
+
+            <!-- class are success and fail -->
+        
+            {% if state == 'valid' %}
+                <div class="layer success"> 
+                    <h1>تم التأكد بنجاح</h1>
+                    <a href="{% url 'create_session' %}">اعادة مرة اخري</a>
+                </div>
+            {% else %}
+                <div class="layer fail"> 
+                    <h1>لم يتم التأكيد</h1>
+                    <a href="{% url 'create_session' %}">اعادة مرة اخري</a>
+                </div>
+            {% endif %}
+        
+        </div>
+    {% endif %}
+
+    <script src="{% static 'js/movements.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+.container {
+    gap: 5px;
+    width: 500px;
+    padding: 40px 30px;
+    
+}
+
+.container .btns {
+    width: 100%;
+    height: 130px;
+    position: relative;
+}
+
+.container .btns button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #0066FF;
+    cursor: pointer;
+}
+
+.container .btns .top {
+    top: 20%;
+}
+.container .btns .down {
+    top: 80%;
+}
+
+.container .btns .left {
+    left: 42%;
+}
+
+.container .btns .right {
+    left: 58%;
+}
+
+
+
+.imgs-area {
+    max-width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.imgs-area img.big {
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain; */
+}
+
+.imgs-area img.small {
+    position: absolute;
+    box-shadow: 0px 0px 50px #fff;
+    top: 0px;
+    left: 0px;
+}
+
+.done-btn {
+    width: 300px;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-family: var(--var-font);
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #30B5E6;
+    box-shadow: 0px 0px 30px #30B5E640;
+    cursor: pointer;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000074;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay.view {
+    display: flex;
+}
+
+
+.overlay .layer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #04040430;
+    width: 400px;
+    height: auto;
+    padding: 1rem 3rem;
+    display: flex;
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    font-family: var(--var-font);
+}
+
+.overlay .layer.success h1 {
+    color: #29DF29;
+    text-shadow: 0px 0px 20px #29DF29;
+}
+
+.overlay .layer.fail h1 {
+    color: crimson;
+    text-shadow: 0px 0px 20px crimson;
+}
+
+.overlay .layer a {
+    color: #2481BF;
+}

@@ -1,0 +1,4 @@
+*.sqlite3
+media/*
+migrations
+__pycache__
